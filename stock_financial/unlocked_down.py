@@ -21,7 +21,6 @@ from data_urls import *
 import pandas as pd
 
 
-
 class UnlockedRun(HeyRun):
     def get_down_url(self, **kwargs):
         '''

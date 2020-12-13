@@ -9,12 +9,8 @@
     sus_run.run(fd=fd)
 """
 
-try:
-    from data_pools.core.data_urls import *
-    from data_pools.core.comm_funcs import *
-except:
-    from data_urls import *
-    from comm_funcs import *
+from data_urls import *
+from comm_funcs import *
 import json
 import time
 

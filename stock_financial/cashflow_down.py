@@ -14,12 +14,8 @@ cash_flow = CashflowRun(
 cash_flow.run(report_date=report_date)
 """
 
-try:
-    from financial_data_pools.stock_financial.data_urls import *
-    from financial_data_pools.stock_financial.comm_funcs import *
-except BaseException:
-    from data_urls import *
-    from comm_funcs import *
+from data_urls import *
+from comm_funcs import *
 import json
 import time
 import pandas as pd

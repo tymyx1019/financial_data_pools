@@ -3,7 +3,6 @@
 '''
 
 from functools import partial
-
 from comm_funcs import *
 
 
@@ -209,6 +208,3 @@ def get_cashflow_url(**kwargs):
         sr='-1,-1',
         type='RPT_DMSK_FN_CASHFLOW')
     return cash_flow_url(**kwargs)
-
-
-

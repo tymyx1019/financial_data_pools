@@ -247,6 +247,7 @@ def get_config(read_default_group, key, arg=None):
 
 class HeyRun(metaclass=ABCMeta):
     """主程序运行类"""
+
     def __init__(
             self,
             data_queue='data_queue',

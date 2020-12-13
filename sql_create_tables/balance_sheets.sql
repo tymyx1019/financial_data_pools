@@ -1,30 +1,8 @@
-/*
-SQLyog Ultimate v11.27 (32 bit)
-MySQL - 5.7.26 : Database - stock
-*********************************************************************
-*/
-
-/*!40101 SET NAMES utf8 */;
-
-/*!40101 SET SQL_MODE=''*/;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`stock` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
-
-USE `stock`;
-
-/*Table structure for table `s_balance_sheets` */
-
-DROP TABLE IF EXISTS `s_balance_sheets`;
-
 CREATE TABLE `s_balance_sheets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `report_date` int(10) unsigned NOT NULL DEFAULT '0',
-  `item_code` char(6) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `item_name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `report_date` datetime NOT NULL,
+  `security_code` char(6) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '代码',
+  `security_name_abbr` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '名字',
   `monetaryfunds` double NOT NULL DEFAULT '0' COMMENT '货币资产（元）：MONETARYFUNDS',
   `monetaryfunds_ratio` double NOT NULL DEFAULT '0' COMMENT '货币资产（元）：MONETARYFUNDS_RATIO',
   `accounts_rece` double NOT NULL DEFAULT '0' COMMENT '应收账款（元）：ACCOUNTS_RECE',
@@ -43,13 +21,9 @@ CREATE TABLE `s_balance_sheets` (
   `total_equity` double NOT NULL DEFAULT '0' COMMENT '股东权益合计（元）:TOTAL_EQUITY',
   `total_equity_ratio` double NOT NULL DEFAULT '0' COMMENT '股东权益合计同比（%）:TOTAL_EQUITY_RATIO',
   `fixed_asset` double NOT NULL DEFAULT '0' COMMENT '固定资产（元）:FIXED_ASSET',
-  `industry_code` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '行业代码',
+  `industry_code` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '行业代码: INDUSTRY_CODE',
+  `industry_name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '所属行业：INDUSTRY_NAME',
   PRIMARY KEY (`id`),
   KEY `report_date` (`report_date`),
-  KEY `item_code` (`item_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=20382 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='资产负债表';
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+  KEY `item_code` (`security_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='资产负债表'

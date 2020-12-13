@@ -84,7 +84,7 @@ class BalancesheetsRun(HeyRun):
 
                 insert_values = []
                 for row in data_all:
-                    data_tmp = tuple(map(lambda x : row[x.upper()], column))
+                    data_tmp = tuple(map(lambda x: row[x.upper()], column))
                     insert_values.append(data_tmp)
 
                 if insert_values:
